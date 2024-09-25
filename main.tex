@@ -1,0 +1,195 @@
+\documentclass[a4paper,12pt]{ctexart} % 使用ctexart类，支持中文
+\usepackage{geometry} % 页边距设置
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\usepackage{fancyhdr} % 页眉页脚设置
+\usepackage{setspace} % 设置行距
+\usepackage{indentfirst} % 首行缩进
+\usepackage{array} % 用于表格格式设置
+\usepackage{titlesec} % 自定义标题格式
+\usepackage{graphicx} % 插入图片
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+\pagestyle{fancy} % 页脚页码居中
+\fancyhf{} % 清除所有默认设置
+\renewcommand{\headrulewidth}{0pt} % 删除页眉线
+\fancyfoot[C]{\thepage} % 页脚页码居中
+
+
+% 自定义加粗文字格式（四级标题）
+\newcommand{\subsubsubsection}[1]{%
+    \par\vspace{0.5\baselineskip} % 段前0.5行距
+    \noindent\hspace{1.25em}{\zihao{4}\heiti #1} 
+    \par\vspace{0.5\baselineskip} % 段后0.5行距
+}
+
+% 设置脚注符号为① ② ③ ...
+\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
+
+% 代码块设置
+\lstset{ 
+    language = C,
+    numbers=left,
+    keywordstyle=\color{blue!70},
+    commentstyle=\color{red!50!green!50!blue!50},
+    frame=shadowbox,
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    basicstyle=\ttfamily,
+    showstringspaces=false
+}
+
+
+
+% 设置封面标题格式
+\newcommand{\makecover}{
+    \begin{center}
+        % 设置标题部分
+        ~\\
+        ~\\
+        {\heiti\zihao{-0} 山东大学}\\[0.5cm]
+        {\heiti\zihao{-0} 网络空间安全学院}\\[3cm]
+        {\heiti\zihao{-0} 《XXXXXXX》}\\[1cm]
+        {\heiti\zihao{-0} 实验报告}\\[4.5cm]
+
+        % 设置表格部分
+        \begin{tabular}{>{\heiti\zihao{-3}}r p{10cm}}
+            学生姓名 & \underline{\makebox[10cm][c]{XXX（学号：YYYY）}} \\[0.35cm]
+             & \underline{\makebox[10cm][c]{XXX（学号：YYYY）}} \\[0.35cm]
+             & \underline{\makebox[10cm][c]{XXX（学号：YYYY）}} \\[0.35cm]
+            指导教师 & \underline{\makebox[10cm][c]{XXXXXXXXXXXXXXXXXXXXXX}} \\[0.35cm]
+            学\hspace{2em}院 & \underline{\makebox[10cm][c]{XXXXXXXXXXXXXXXXXXXXX}} \\[0.35cm]
+            专业班级 & \underline{\makebox[10cm][c]{XXXXXXXXXXXXXXXXXX}} \\[0.35cm]
+            完成时间 & \underline{\makebox[10cm][c]{XXXX年XX月XX日}} \\
+        \end{tabular}
+    \end{center}
+    \thispagestyle{empty} % 封面页不显示页码
+    \newpage % 分页
+}
+
+% 设置标题格式
+\ctexset{
+    section = {
+        format+ = \zihao{-2}\heiti,
+        name = {}, % 标题前缀为空
+        % number = {}, % 取消编号
+        beforeskip = 0.5\baselineskip,
+        afterskip = 0.5\baselineskip,
+        indent = 0em, % 标题左对齐，且无缩进
+    },
+    subsection = {
+        format+ = \zihao{3}\heiti,
+        name = {}, % 标题前缀为空
+        % number = {}, % 取消编号
+        beforeskip = 0.5\baselineskip,
+        afterskip = 0.5\baselineskip,
+        indent = 0em, % 一级标题左对齐，且无缩进
+    },
+    subsubsection = {
+        format+ = \zihao{-3}\heiti,
+        name = {}, % 标题前缀为空
+        % number = {}, % 取消编号
+        beforeskip = 0.5\baselineskip,
+        afterskip = 0.5\baselineskip,
+        indent = 0em, % 二级标题左对齐，且无缩进
+    },
+}
+
+% 设置正文格式
+\setlength{\parindent}{2em} % 首行缩进2字符
+\setlength{\parskip}{0pt} % 段前段后0行
+
+% 设置正文字体为宋体，小四，左右缩进0字符
+\renewcommand{\normalsize}{\fontsize{12pt}{20pt}\selectfont} % 小四，行距20磅
+\setlength{\leftskip}{0pt} % 左缩进0字符
+\setlength{\rightskip}{0pt} % 右缩进0字符
+
+% 正文部分
+\begin{document}
+
+% 封面
+\makecover
+
+
+\newpage
+\tableofcontents
+\setcounter{page}{0}
+% \thispagestyle{empty}
+\pagenumbering{Roman} %设置罗马数字页码
+\clearpage
+\pagenumbering{arabic} %设置阿拉伯数字页码
+
+
+% 实验报告正文部分
+\section{标题}
+正文内容。请在此处撰写您的实验报告内容。请在此处撰写您的实验报告内容。
+
+最后最好在本地编译一遍，overleaf的黑体比windows自带的黑体要粗一些
+
+\subsection{实验目标}
+
+\subsection{实验原理}
+
+\subsection{实验设置}
+
+\subsection{实验步骤及实验结果}
+
+\subsection{一级标题}
+更多内容。行内代码 \verb|sudo rm -rf /*|
+
+\subsubsection{二级标题}
+进一步的内容。信息技术广泛应用和网络空间兴起发展，极大促进了经济社会繁荣进步，同时也带来了新的安全风险和挑战。网络空间安全（以下称网络安全）事关人类共同利益，事关世界和平与发展，事关各国国家安全。维护我国网络安全是协调推进全面建成小康社会、全面深化改革、全面依法治国、全面从严治党战略布局的重要举措，是实现“两个一百年”奋斗目标、实现中华民族伟大复兴中国梦的重要保障。"这是一个直接引用的例子。"①\footnote{XX，XX，XX著，《XXX》[M]，北京：中国人民大学出版社，2010年4月，第10页。}
+
+
+\subsubsubsection{三级标题}
+更多内容
+
+这里是一张图片
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/HASHTEAM.jpg}
+    \caption{hashteam}
+    \label{fig:enter-label}
+\end{figure}
+
+
+
+\clearpage
+% 参考文献部分
+\begin{thebibliography}{99} % 参考文献环境，99代表标签宽度
+\addcontentsline{toc}{section}{参考文献}
+\zihao{-4} % 调整参考文献字体大小为“小四”
+
+
+\bibitem{ref1} XX，XX，XX著，《XXX》[M]，北京：中国人民大学出版社，2010年4月。
+\bibitem{ref2} XX，XX著，XX，XX 译，《XXX》[M]，上海：三联出版社，2010年4月。
+\bibitem{ref3} XX，《XXX》[D]，天津：南开大学硕士（博士）学位论文，2008年6月。
+\bibitem{ref4} XX，XX，XX，《XXX》[J]，经济研究，2008年6月，第XX-XX页。
+
+\end{thebibliography}
+\clearpage
+\section*{附录}
+\addcontentsline{toc}{section}{附录}
+
+
+\lstset{language=sh}
+\begin{lstlisting}
+ping 127.0.0.1
+\end{lstlisting}
+
+\lstset{language=Python}
+\begin{lstlisting}
+#!/usr/local/bin/python3
+inp = input("> ")
+
+for i, v in enumerate(inp):
+    if not (ord(v) < 128 and i % 2 == ord(v) % 2):
+        print('bad')
+        exit()
+
+eval(inp)
+\end{lstlisting}
+
+\end{document}
